@@ -38,32 +38,13 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
 }
-
-#restart-btn {
-    position: absolute;
-    bottom: 10vh; /* adjust as needed to position under cookie */
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-family: 'Pixelify Sans Medium', Georgia, serif;
-    background-color: #f5d9ae;
-    border: none;
-    border-radius: 5px;
-    color: #4e342e;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    display: inline-block;
-}
-  
-#restart-btn:hover {
-    background-color: #eaa65a;
-}
   
 #cookie-img {
     width: 50%;
     max-width: 10000px;
     height: auto;
     display: block;
-    margin: 0 auto;
+    margin: 0px auto 0 auto;
     transition: transform 0.3s ease;
 }
   
@@ -93,6 +74,25 @@ body {
     animation: float-letter 0.6s ease-out forwards;
     pointer-events: none;
     white-space: pre;
+}
+
+#restart-btn {
+    position: absolute;
+    bottom: 10vh; /* adjust as needed to position under cookie */
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: 'Pixelify Sans Medium', Georgia, serif;
+    background-color: #f5d9ae;
+    border: none;
+    border-radius: 5px;
+    color: #4e342e;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+}
+  
+#restart-btn:hover {
+    background-color: #eaa65a;
 }
       
 @keyframes float-letter {
@@ -145,18 +145,19 @@ body {
 
     #cookie-img {
       width: 90vw;
+      margin: 20vh auto 0 auto;
     }
   
     #fortune-box {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       line-height: 1.6;
       top: 20px;
       width: 90%;
     }
   
     .floating-letter {
-      font-size: 1.2rem;
-      top: 80px; /* lower source for animation to match cookie opening */
+      font-size: 1.1rem;
+      top: calc(80px + 20vh); /* lower source for animation to match cookie opening */
       transform: translateX(-50%);
     }
   
