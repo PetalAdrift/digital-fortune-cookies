@@ -1,0 +1,172 @@
+@font-face {
+    font-family: 'Pixelify Sans Medium';
+    src: url('fonts/PixelifySans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+a:link {
+    color: #d7d1fb;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+a:visited {
+    color: #d7d1fb;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+body {
+    background: url('img/bg.png') repeat;
+    font-family: 'Georgia', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+  
+#cookie-container {
+    position: relative;
+    margin-top: 100px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#restart-btn {
+    position: absolute;
+    bottom: 10vh; /* adjust as needed to position under cookie */
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: 'Pixelify Sans Medium', Georgia, serif;
+    background-color: #f5d9ae;
+    border: none;
+    border-radius: 5px;
+    color: #4e342e;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+}
+  
+#restart-btn:hover {
+    background-color: #eaa65a;
+}
+  
+#cookie-img {
+    width: 50%;
+    max-width: 10000px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+  
+#fortune-box {
+    position: absolute;
+    top: 30px;
+    width: 75%;
+    max-width: 10000px;
+    text-align: center;
+    font-family: 'Pixelify Sans Medium', Georgia, serif;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: #4e342e;
+    min-height: 3em;
+    pointer-events: none;
+}
+    
+.floating-letter {
+    position: absolute;
+    top: 200px; /* tune this number to align to the cookie opening */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    font-family: 'Pixelify Sans Medium', Georgia, serif;
+    color: #6d4c41;
+    opacity: 0;
+    animation: float-letter 0.6s ease-out forwards;
+    pointer-events: none;
+    white-space: pre;
+}
+      
+@keyframes float-letter {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -180px); /* adjust height to fortuneBox */
+        opacity: 0;
+    }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+  }
+  
+.shake {
+    animation: shake 0.4s ease;
+}
+
+.no-transition {
+    transition: none !important;
+}
+
+#footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #d7d1fb;
+  font-family: 'Pixelify Sans Medium', Georgia, serif;
+}
+
+/* mobile adaptation */
+
+@media (max-width: 600px) {
+    #cookie-container{
+        margin-top: 20vh;
+    }
+
+    #cookie-img {
+      width: 90vw;
+    }
+  
+    #fortune-box {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      top: 20px;
+      width: 90%;
+    }
+  
+    .floating-letter {
+      font-size: 1.2rem;
+      top: 80px; /* lower source for animation to match cookie opening */
+      transform: translateX(-50%);
+    }
+  
+    #restart-btn {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      margin-top: 40px;
+    }
+  
+    #footer {
+      font-size: 0.7rem;
+    }
+}
