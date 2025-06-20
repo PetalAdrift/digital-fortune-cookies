@@ -6,13 +6,13 @@
 }
 
 a:link {
-    color: #d7d1fb;
+    color: #b5a9f9;
     background-color: transparent;
     text-decoration: none;
 }
-  
+
 a:visited {
-    color: #d7d1fb;
+    color: #b5a9f9;
     background-color: transparent;
     text-decoration: none;
 }
@@ -23,14 +23,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100vw;
     height: 100vh;
     margin: 0;
     flex-direction: column;
 }
-  
+
 #cookie-container {
     position: relative;
-    margin-top: 100px;
+    width: 100vw;
+    margin-top: 10vh;
     text-align: center;
     cursor: pointer;
     user-select: none;
@@ -38,21 +40,19 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
 }
-  
+
 #cookie-img {
-    width: 50%;
-    max-width: 10000px;
+    width: 40%;
     height: auto;
     display: block;
     margin: 0px auto 0 auto;
     transition: transform 0.3s ease;
 }
-  
+
 #fortune-box {
     position: absolute;
-    top: 30px;
+    top: 4vh;
     width: 75%;
-    max-width: 10000px;
     text-align: center;
     font-family: 'Pixelify Sans Medium', Georgia, serif;
     font-size: 1.5rem;
@@ -61,10 +61,11 @@ body {
     min-height: 3em;
     pointer-events: none;
 }
-    
+
 .floating-letter {
     position: absolute;
-    top: 200px; /* tune this number to align to the cookie opening */
+    top: 13vh;
+    /* tune this number to align to the cookie opening */
     left: 50%;
     transform: translateX(-50%);
     font-size: 1.5rem;
@@ -78,7 +79,8 @@ body {
 
 #restart-btn {
     position: absolute;
-    bottom: 10vh; /* adjust as needed to position under cookie */
+    bottom: 10vh;
+    /* adjust as needed to position under cookie */
     padding: 10px 20px;
     font-size: 1rem;
     font-family: 'Pixelify Sans Medium', Georgia, serif;
@@ -90,34 +92,76 @@ body {
     transition: background-color 0.2s ease;
     display: inline-block;
 }
-  
+
 #restart-btn:hover {
     background-color: #eaa65a;
 }
-      
+
+#bgm-container {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#bgm-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 5vw;
+    height: 5vw;
+    max-width: 60px;
+    max-height: 60px;
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+#bgm-toggle:hover {
+    opacity: 1;
+}
+
 @keyframes float-letter {
     0% {
         transform: translate(-50%, 0);
         opacity: 0;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
-        transform: translate(-50%, -180px); /* adjust height to fortuneBox */
+        transform: translate(-50%, -180px);
+        /* adjust height to fortuneBox */
         opacity: 0;
     }
 }
 
 @keyframes shake {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(-5px); }
-    40% { transform: translateX(5px); }
-    60% { transform: translateX(-5px); }
-    80% { transform: translateX(5px); }
-    100% { transform: translateX(0); }
-  }
-  
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-5px);
+    }
+
+    40% {
+        transform: translateX(5px);
+    }
+
+    60% {
+        transform: translateX(-5px);
+    }
+
+    80% {
+        transform: translateX(5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
 .shake {
     animation: shake 0.4s ease;
 }
@@ -127,47 +171,60 @@ body {
 }
 
 #footer {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  text-align: center;
-  font-size: 0.8rem;
-  color: #d7d1fb;
-  font-family: 'Pixelify Sans Medium', Georgia, serif;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #cac1fd;
+    font-family: 'Pixelify Sans Medium', Georgia, serif;
 }
 
 /* mobile adaptation */
 
 @media (max-width: 600px) {
-    #cookie-container{
+    #cookie-container {
         margin-top: 20vh;
     }
 
     #cookie-img {
-      width: 90vw;
-      margin: 20vh auto 0 auto;
+        width: 90vw;
+        margin: 20vh auto 0 auto;
     }
-  
+
     #fortune-box {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      top: 20px;
-      width: 90%;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        top: 20px;
+        width: 90%;
     }
-  
+
     .floating-letter {
-      font-size: 1.1rem;
-      top: calc(80px + 20vh); /* lower source for animation to match cookie opening */
-      transform: translateX(-50%);
+        font-size: 1.1rem;
+        top: calc(80px + 20vh);
+        /* lower source for animation to match cookie opening */
+        transform: translateX(-50%);
     }
-  
+
     #restart-btn {
-      font-size: 0.9rem;
-      padding: 8px 16px;
-      margin-top: 40px;
+        font-size: 0.9rem;
+        padding: 8px 16px;
+        margin-top: 40px;
     }
-  
+
     #footer {
-      font-size: 0.7rem;
+        font-size: 0.55rem;
+    }
+
+    #bgm-toggle {
+        position: fixed;
+        bottom: 40px;
+        right: 20px;
+        width: 5vw;
+        height: 5vw;
+        max-width: 60px;
+        max-height: 60px;
+        cursor: pointer;
+        opacity: 0.85;
     }
 }

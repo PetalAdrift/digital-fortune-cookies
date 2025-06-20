@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,16 +8,22 @@
   <link rel="icon" type="image/png" href="img/favicon.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <div id="fortune-box"></div>
   <div id="cookie-container">
     <img id="cookie-img" src="img/cookie (whole).png" alt="Fortune Cookie" />
   </div>
   <audio id="crack-sound" src="sfx/crumple.mp3"></audio>
+  <audio id="bgm" src="sfx/bgm.mp3" loop></audio>
   <button id="restart-btn" type="button" style="display: none;">have another 🥠</button>
+  <div id="bgm-container">
+    <img id="bgm-toggle" src="img/bgm-on.png" alt="Toggle BGM" tabindex="-1">
+  </div>
   <script src="main.js"></script>
 </body>
 <footer id="footer">
-  Copyright 2025 <a href="mailto: henry1911@foxmail.com">Hoyii</a>. Quotes from various contributors.
+  Copyright 2025 <a href="mailto: henry1911@foxmail.com">Hoyii</a>. Quotes from various contributors. <a href="https://github.com/PetalAdrift/digital-fortune-cookies/issues/1">Contribute your own quotes.</a>
 </footer>
+
 </html>
