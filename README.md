@@ -9,4 +9,4 @@ Coming flavors:
 - snarky remarks
 - haiku's
 
-If you want to share a fortune that you wrote, open a [new issue](https://github.com/PetalAdrift/digital-fortune-cookies/issues) or email [Hoyii](henry1911@foxmail.com).
+If you want to share a fortune that you wrote, see ["Submitting your own fortunes | 提交自定义幸运饼干"](https://github.com/PetalAdrift/digital-fortune-cookies/issues/1).
