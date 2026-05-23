@@ -51,7 +51,7 @@ const cookieImg = document.getElementById("cookie-img");
 const sound = document.getElementById("crack-sound");
 const fortuneBox = document.getElementById("fortune-box");
 const restartBtn = document.getElementById('restart-btn');
-const fortuneModeBtn = document.getElementById("fortune-mode-btn");
+const fortuneModeSwitch = document.getElementById("fortune-mode-switch");
 
 function resetCookie() {
   cookieImg.src = "img/cookie (whole).png";
@@ -156,19 +156,7 @@ restartBtn.addEventListener("click", () => {
   resetCookie();
 });
 
-bgmToggle.addEventListener("click", () => {
-  if (bgmPlaying) {
-    bgm.pause();
-    bgmToggle.src = "img/bgm-off.png";
-    bgmPlaying = false;
-  } else {
-    bgm.play();
-    bgmToggle.src = "img/bgm-on.png";
-    bgmPlaying = true;
-  }
-});
-
-fortuneModeBtn.addEventListener("click", (e) => {
+fortuneModeSwitch.addEventListener("click", (e) => {
   e.stopPropagation();
 
   if (fortuneKeys.length === 0) return;
