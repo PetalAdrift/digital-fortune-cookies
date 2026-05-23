@@ -123,6 +123,12 @@ body {
     opacity: 1;
 }
 
+#fortune-mode-container {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
 #fortune-mode-switch {
   position: fixed;
   bottom: 20px;
