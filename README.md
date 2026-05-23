@@ -4,9 +4,9 @@ Do you enjoy a fortune cookie? Introducing the *digital* version with 200% more 
 
 Current flavors:
 - tediously long stories
+- snarky remarks
 
 Coming flavors:
-- snarky remarks
 - haiku's
 
 If you want to share a fortune that you wrote, see ["Submitting your own fortunes | 提交自定义幸运饼干"](https://github.com/PetalAdrift/digital-fortune-cookies/issues/1).
