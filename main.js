@@ -1,9 +1,44 @@
+let fortuneData = {};
 let fortunes = [];
+let fortuneKeys = [];
+let fortuneKeyIndex = 0;
+
+const FORTUNE_FONT_SIZES = {
+  stories: { desktop: "1.5rem", mobile: "1.1rem" },
+  remarks: { desktop: "3rem", mobile: "2rem" },
+  default: { desktop: "2rem", mobile: "1.4rem" }
+};
+
+function applyFortuneFontSize(key) {
+  const size = FORTUNE_FONT_SIZES[key] || FORTUNE_FONT_SIZES.default;
+
+  document.documentElement.style.setProperty("--fortune-font-size", size.desktop);
+  document.documentElement.style.setProperty("--fortune-font-size-mobile", size.mobile);
+}
+
+function setFortuneMode(index) {
+  if (fortuneKeys.length === 0) return;
+
+  fortuneKeyIndex = (index + fortuneKeys.length) % fortuneKeys.length;
+
+  const key = fortuneKeys[fortuneKeyIndex];
+  fortunes = fortuneData[key];
+
+  applyFortuneFontSize(key);
+
+  const fortuneModeBtn = document.getElementById("fortune-mode-btn");
+  fortuneModeBtn.title = `Current fortune mode: ${key}`;
+  fortuneModeBtn.setAttribute("aria-label", `Switch fortune mode. Current mode: ${key}`);
+}
 
 fetch('data/fortune.json')
   .then(response => response.json())
   .then(data => {
-    fortunes = data.stories;
+    fortuneData = data;
+    fortuneKeys = Object.keys(data).filter(key => Array.isArray(data[key]) && data[key].length > 0);
+
+    const defaultIndex = Math.max(0, fortuneKeys.indexOf("remarks"));
+    setFortuneMode(defaultIndex);
   })
   .catch(error => {
     console.error("Failed to load fortunes:", error);
@@ -16,6 +51,14 @@ const cookieImg = document.getElementById("cookie-img");
 const sound = document.getElementById("crack-sound");
 const fortuneBox = document.getElementById("fortune-box");
 const restartBtn = document.getElementById('restart-btn');
+const fortuneModeBtn = document.getElementById("fortune-mode-btn");
+
+function resetCookie() {
+  cookieImg.src = "img/cookie (whole).png";
+  fortuneBox.textContent = "";
+  cookieCracked = 0;
+  restartBtn.style.display = "none";
+}
 
 let bgmPlaying = false;
 let cookieCracked = 0;
@@ -78,6 +121,10 @@ cookieImg.addEventListener("click", () => {
         cookieImg.classList.remove("shake", "no-transition");
 
         // Get fortune
+        if (fortunes.length === 0) {
+          console.warn("No fortunes are loaded for the current fortune mode.");
+          return;
+        }
         const selected = fortunes[Math.floor(Math.random() * fortunes.length)];
         randomFortune = selected.text;
         console.log("Contributor:", selected.contributor);
@@ -106,10 +153,7 @@ cookieImg.addEventListener("click", () => {
 });
 
 restartBtn.addEventListener("click", () => {
-  cookieImg.src = "img/cookie (whole).png";
-  fortuneBox.textContent = "";
-  cookieCracked = 0;
-  restartBtn.style.display = 'none';
+  resetCookie();
 });
 
 bgmToggle.addEventListener("click", () => {
@@ -122,4 +166,13 @@ bgmToggle.addEventListener("click", () => {
     bgmToggle.src = "img/bgm-on.png";
     bgmPlaying = true;
   }
+});
+
+fortuneModeBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+
+  if (fortuneKeys.length === 0) return;
+
+  setFortuneMode(fortuneKeyIndex + 1);
+  resetCookie();
 });
