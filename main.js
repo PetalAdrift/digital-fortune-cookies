@@ -25,10 +25,6 @@ function setFortuneMode(index) {
   fortunes = fortuneData[key];
 
   applyFortuneFontSize(key);
-
-  const fortuneModeBtn = document.getElementById("fortune-mode-btn");
-  fortuneModeBtn.title = `Current fortune mode: ${key}`;
-  fortuneModeBtn.setAttribute("aria-label", `Switch fortune mode. Current mode: ${key}`);
 }
 
 fetch('data/fortune.json')
